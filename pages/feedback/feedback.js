@@ -15,6 +15,9 @@
         2. 绑定事件 事件触发时 把输入框的值 存入到变量中
       2. 对这些内容 合法性验证
       3. 验证通过 用户选择的图片 上传到专门的图片服务器 返回图片外网的连接
+        1. 遍历图片数组 
+        2. 挨个上传
+        3. 自己再维护图片数组 存放 图片上传后的外网的链接
       4. 文本域和外网的图片路径 一起提交到服务器中
       5.清空
       6. 返回上一页
@@ -28,6 +31,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // 外网的图片的路径数组
+    upLoad: [],
     // 文本域内容
     textValue: "",
     tabs: [{
@@ -130,9 +135,10 @@ Page({
   },
   // 表单提交
   handleFormSubmit() {
-    //1. 获取文本域的内容
+    //1. 获取文本域和图片的内容
     const {
-      textValue
+      textValue,
+      chooseImgs
     } = this.data
     //2. 对这些内容 合法性验证
     if (!textValue.trim()) {
@@ -142,19 +148,57 @@ Page({
       })
       return;
     }
-    // 3. 准备上传图片 到专门的图片服务器
-    // 上传文件API 不支持 多个文件同时上传 遍历数组挨个上传
-    var upTask = wx.uploadFile({
-      url: '',
-      filePath: ,
-      name: ,
-      formData: {},
+    // 显示正在等待上传
+    wx.showLoading({
+      title: "正在上传中",
+      mask: true,
       success: (result) => {
 
-      },
-      fail: () => {},
-      complete: () => {}
-    });
+      }
+    })
+    // 判断有没有需要上传的图片数据
+    if (chooseImgs.length != 0) {
+      // 3. 准备上传图片 到专门的图片服务器
+      // 上传文件API 不支持 多个文件同时上传 遍历数组挨个上传
+      chooseImgs.forEach((v, i) => {
+        wx.uploadFile({
+          url: 'https://www.cdnjson.com/api/upload',
+          filePath: v,
+          name: "file",
+          formData: {},
+          success: (result) => {
+            console.log(result)
+            // 3.自己再维护图片数组 存放 图片上传后的外网的链接
+            // 4. 文本域和外网的图片路径 一起提交到服务器中
+            let url = JSON.parse(result.data).url
+            this.upLoad.push(url)
+            // 所有的图片都上传完毕了才触发
+            if (i === chooseImgs.length - 1) {
+              wx.hideLoading();
+              console.log("文本域和外网的图片路径 一起提交到服务器中")
+              // 提交都成功了 重置页面
+              this.setData({
+                textValue: "",
+                chooseImgs: []
+              })
+              // 返回上一页
+              wx.navigateBack({
+                delta: 1
+              })
+
+            }
+          }
+        })
+      })
+    } else {
+      wx.hideLoading();
+
+      console.log("只是提交了文本")
+      wx.navigateBack({
+        delta: 1
+      });
+
+    }
 
   },
   /**
