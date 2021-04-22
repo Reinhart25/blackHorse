@@ -9,6 +9,7 @@ page,view,swiper,swiper-item,image,navigator {
 page{
   /*主题颜色*/
   --themeColor: #eb4450;
+  --buttonWh: 90rpx;
   /*定义统一字体大小 */
   font-size: 28rpx;
 }

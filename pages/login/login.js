@@ -1,13 +1,34 @@
-// pages/login/login.js
+import {
+  getUserProfile
+} from '../../utils/async.js';
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    userInfo: {},
+    hasUserInfo: false
+  },
+  // 获取用户信息
+  async handleGetUserInfo() {
+    const {
+      userInfo
+    } = await getUserProfile({
+      desc: '用于完善会员资料'
+    })
+    this.setData({
+      userInfo: userInfo,
+      hasUserInfo: true
+    })
+    wx.setStorageSync("userInfo", userInfo)
+    wx.navigateBack({
+      delta: 1
+    })
+
 
   },
-
   /**
    * 生命周期函数--监听页面加载
    */

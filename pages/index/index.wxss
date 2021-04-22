@@ -6,8 +6,14 @@ page {
   width: 750rpx;
   height: 340rpx;
 }
-.index_swiper swiper image {
-  width: auto;
+.index_swiper swiper swiper-item {
+  width: 100%;
+}
+.index_swiper swiper swiper-item navigator {
+  width: 100%;
+}
+.index_swiper swiper swiper-item navigator image {
+  width: 100%;
 }
 .index_cate {
   display: flex;

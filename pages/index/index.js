@@ -21,7 +21,7 @@ Page({
    */
   onLoad: function (options) {
     // wx.request({
-    //   url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata',
+    //   url: '''/home/swiperdata',
     //   timeout: 5000,
     //   success: (result) => {
     //     console.log(result)
@@ -37,32 +37,32 @@ Page({
   },
   getSwiperList() {
     request({
-        url: "https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata"
+        url: "/home/swiperdata"
       })
       .then(result => {
         this.setData({
-          swiperList: result.data.message
+          swiperList: result
         })
       })
   },
   getCatesList() {
     request({
-        url: "https://api-hmugo-web.itheima.net/api/public/v1/home/catitems"
+        url: "/home/catitems"
       })
       .then(result => {
         this.setData({
-          catesList: result.data.message
+          catesList: result
         })
       })
   },
   // 楼层数据
   getFloorList() {
     request({
-        url: "https://api-hmugo-web.itheima.net/api/public/v1/home/floordata"
+        url: "/home/floordata"
       })
       .then(result => {
         this.setData({
-          floorList: result.data.message
+          floorList: result
         })
       })
   },

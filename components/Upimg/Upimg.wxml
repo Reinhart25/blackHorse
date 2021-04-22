@@ -1,0 +1,4 @@
+<view class="up_img_wrap">
+  <image class="" src="{{src}}" data-index="{{index}}" bindtap="handleImgDel" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+  <icon class="clear" type="clear" size="23" color="red" data-index="{{index}}"></icon>
+</view>

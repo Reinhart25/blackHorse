@@ -1,0 +1,138 @@
+page{
+  width: 100vw;
+  height: auto;
+  background-color: #D5D5D5;
+}
+
+.user_info_wrap{
+  height: 45vh;
+  overflow: hidden;
+  background-color: var(--themeColor);
+  position: relative;
+  .user_img_wrap{
+    position: relative;
+    .user_bg{
+      height: 46vh;
+      // 高斯模糊
+      -webkit-filter: blur(10rpx);
+      filter: blur(10rpx);
+    }
+
+    .user_info{
+      position: absolute;
+      left: 50%;
+      transform: translateX(
+        -50%
+      );
+      top: 30%;
+      text-align: center;
+      .user_icon{
+        width: 150rpx;
+        height: 150rpx;
+        border-radius: 50%;
+      }
+      .user_name{
+        color: #fff;
+        margin-top: 40rpx;
+        // font-size: 40rpx;
+      }
+    }
+  }
+
+  .user_btn{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 40%;
+    border: 1rpx solid greenyellow;
+    color: greenyellow;
+    font-size: 38rpx;
+    padding: 20rpx 30rpx;
+    border-radius: 14rpx;
+  }
+}
+
+.user_content {
+  position: relative;
+  .user_main {
+    padding-bottom: 50rpx;
+    color: #666;
+    position: absolute;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -50rpx;
+    background-color: #D5D5D5;
+    // 1. 历史足迹
+    .history_wrap {
+      background-color: #fff;
+      display: flex;
+      padding: 10rpx 0;
+      navigator {
+        flex: 1;
+        text-align: center;
+        .his_num {
+          color: var(--themeColor);
+          font-size: 40rpx;
+        }
+    
+        .his_name {
+    
+        }
+      }
+    }
+    // 2. 我的订单 
+    .orders_wrap {
+      background-color: #fff;
+      margin-top: 30rpx;
+      .orders_title {
+        padding: 20rpx 25rpx;
+        border-bottom: 1rpx solid #ccc;
+      }
+    
+      .orders_content {
+        display: flex;
+
+        navigator {
+          flex: 1;
+          text-align: center;
+          padding: 15rpx 0;
+          .iconfont {
+            color: var(--themeColor);
+          }
+    
+          .order_name {
+    
+          }
+        }
+      }
+    }
+  //  3. 收货地址管理
+    .address_wrap {
+      margin-top: 30rpx;
+      background-color: #fff;
+      padding: 20rpx;
+    }
+    // 4. 应用信息相关
+    .app_info_wrap {
+      margin-top: 30rpx;
+      background-color: #fff;
+      .app_info_item {
+        padding: 20rpx;
+        border-bottom: 4rpx solid #ccc;
+      }
+      .app_info_contact {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    // 5. 推荐
+    .recommend_wrap {
+      margin-top: 26rpx;
+      background-color: #fff;
+      padding: 20rpx;
+      margin-bottom: 30rpx;
+    }
+
+  }
+}

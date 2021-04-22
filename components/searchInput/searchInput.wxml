@@ -1,7 +1,7 @@
 <!--components/searchInput/searchInput.wxml-->
 <!-- <text>components/searchInput/searchInput.wxml</text> -->
 <view class="search_input">
-  <navigator url="/pages/search/search" open-type="navigate" target="self">
+  <navigator url="/pages/search/search" target="self">
     搜索
   </navigator>
 </view>
